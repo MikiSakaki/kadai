@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUGOROKU</title>
+  <link rel="stylesheet" href="css/sugoroku3.css">
+  
+  <style>
+    /* 省略 */
+  </style>
+</head>
+<body>
+
+  <h1>SUGOROKU</h1>
+
+  <!-- ボタンエリア -->
+  <div class="btn">
+    <div class="saikorofuru">
+      <button onclick="rollDice()" id="rollButton">サイコロを振る</button>
+    </div>
+    <div class="reset">
+      <button class="reset-button" onclick="resetGame()">リセット</button>
+    </div>
+  </div>
+
+  <div class="result">
+    <div id="result-me"></div>
+    <div id="result-pc"></div>
+  </div>
+
+  <div class="table">
+    <table>
+      <tr id="board-row">
+        <!-- マス目はここに追加 -->
+      </tr>
+    </table>
+  </div>
+
+  <div class="judge">
+    <div id="judgement-me"></div>
+    <div id="judgement-pc"></div>
+  </div>
+
+  <footer class="footer"></footer>
+
+  <script>
+    const boardSize = 13; // 14列目がゴール
+    let mePosition = 0;
+    let pcPosition = 0;
+    let gameEnded = false;
+
+    function rollDice() {
+      if (gameEnded) return;
+
+      const meResult = Math.floor(Math.random() * 6) + 1;
+      const pcResult = Math.floor(Math.random() * 6) + 1;
+
+      mePosition += meResult;
+      pcPosition += pcResult;
+
+      updateBoard();
+      checkWinner();
+      
+      document.getElementById('result-me').innerText = `Usagiの結果: ${meResult}`;
+      document.getElementById('result-pc').innerText = `Kameの結果: ${pcResult}`;
+    }
+
+    function resetGame() {
+      mePosition = 0;
+      pcPosition = 0;
+      gameEnded = false;
+      updateBoard();
+      document.getElementById('result-me').innerText = '';
+      document.getElementById('result-pc').innerText = '';
+      document.getElementById('judgement-me').innerText = '';
+      document.getElementById('judgement-pc').innerText = '';
+      document.getElementById('rollButton').disabled = false;
+    }
+
+    function updateBoard() {
+      const boardRow = document.getElementById('board-row');
+      boardRow.innerHTML = '';
+
+      for (let i = 1; i <= boardSize + 1; i++) {
+        const cell = document.createElement('td');
+        cell.textContent = i;
+
+        if (i === 1) {
+          cell.style.backgroundColor = '#e0e0e0';
+          cell.textContent = 'Start';
+        }
+
+        if (i === boardSize + 1) {
+          cell.style.backgroundColor = '#e0e0e0';
+          cell.textContent = 'Goal';
+        }
+
+        if (mePosition === boardSize + 1 && i === boardSize + 1) {
+          cell.classList.add('cell-img');
+          cell.style.backgroundImage = 'url("img/usagi.png")';
+        } else if (i === mePosition && mePosition <= boardSize) {
+          cell.classList.add('cell-img');
+          cell.style.backgroundImage = 'url("img/usagi.png")';
+        }
+
+        if (pcPosition === boardSize + 1 && i === boardSize + 1) {
+          cell.classList.add('cell-img');
+          cell.style.backgroundImage = 'url("img/kame.png")';
+        } else if (i === pcPosition && pcPosition <= boardSize) {
+          cell.classList.add('cell-img');
+          cell.style.backgroundImage = 'url("img/kame.png")';
+        }
+
+        boardRow.appendChild(cell);
+      }
+    }
+
+    function checkWinner() {
+      const resultMe = document.getElementById('judgement-me');
+      const resultPc = document.getElementById('judgement-pc');
+
+      if (mePosition >= boardSize + 1) {
+        resultMe.innerText = 'Usagi wins!';
+        gameEnded = true;
+        document.getElementById('rollButton').disabled = true;
+      }
+
+      if (pcPosition >= boardSize + 1) {
+        resultPc.innerText = 'Kame wins!';
+        gameEnded = true;
+        document.getElementById('rollButton').disabled = true;
+      }
+    }
+
+    window.onload = function () {
+      resetGame();
+    };
+  </script>
+
+</body>
+</html>

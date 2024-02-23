@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body {
+    background-color: #faeed9;
+    text-align: center;
+    font-size: 32px;
+    font-family: 'Itim', cursive;
+}
+
+h1 {
+    text-align: center;
+    color: #d46519;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+  th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+    height: 100px;
+  }
+
+
+  #result-me, #result-pc {
+    margin-top: 20px;
+  }
+
+  /* .player-img {
+    width: 40px;
+    height: 40px;
+  } */
+
+
+
+.btn {
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    margin-top:20px ;
+    margin-bottom:20px ;
+}
+
+
+
+.saikorofuru button {
+    width: 300px;
+    font-size: 20px;
+    background-color: #1c58b5;
+    color: #fff;
+    padding: 20px 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 50px;
+    border: none; /* ボーダーを無効にする */
+    outline: none; /* アウトラインを無効にする */
+    border-radius: 80px;
+    cursor: pointer;
+}
+
+.saikorofuru button:hover {
+    opacity: 0.5;
+}
+
+
+.reset button {
+    margin-left: 50px;
+    width: 300px;
+    font-size: 20px;
+    background-color: #1c58b5;
+    color: #fff;
+    padding: 20px 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none; /* ボーダーを無効にする */
+    outline: none; /* アウトラインを無効にする */
+    border-radius: 80px;
+    cursor: pointer;
+}
+
+.reset button:hover {
+    opacity: 0.5;
+}
+
+.table {
+margin-top:50px ;
+margin-bottom:50px ;
+margin-left:auto ;
+margin-right:auto ;
+
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #04ac6c;
+    width: 100%;
+  }
+
+.result {
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    margin-top:20px ;
+    margin-bottom:20px ;
+    color: #04ac6c;
+    margin: auto;
+  }
+
+  .result {
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    margin-top:20px ;
+    margin-bottom:20px ;
+  }
+  
+  #result-me {
+    margin-right: 50px;
+    width: 300px;
+    font-size: 30px;
+    color: #04ac6c;
+    text-align: center;
+
+  }
+  #result-me {
+    margin-right: 80px;
+  }
+
+    
+  #result-pc {
+    margin-right: 50px;
+    width: 300px;
+    font-size: 30px;
+    color: #04ac6c;
+    text-align: center;
+
+  }
+  #result-pc {
+    margin-left: 80px;
+  }
+
+  .judge {
+    display: flex;
+    justify-content: center; 
+    text-align: center;
+    color: #04ac6c;
+    font-size: 60px;
+    margin-top:50px ;
+  }
+
+  .footer {
+    background-color: #faeed9;
+    padding: 30px; 
+  }
+
+  .cell-img {
+    width: 100px;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
